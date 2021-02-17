@@ -1,0 +1,146 @@
+grid=[]
+
+
+for l in range (3):
+    aux=[]
+    autos=2
+    for i in range(12):
+        a=random.randint(0,1)
+        if(a==1 and autos!=0):
+            autos-=1
+            aux.append(1)
+        else:
+            aux.append(0)
+
+    grid.append(aux)
+
+
+
+
+
+
+while True:
+    wn.update()
+
+    # Move the shape
+    # Open Row
+    # Check for the bottom
+    if shape.y == 23 - shape.height + 1:
+        shape = Shape()
+        check_grid(grid)
+    # Check for collision with next row
+    elif shape.can_move(grid):
+        # Erase the current shape
+        shape.erase_shape(grid)
+        
+        # Move the shape by 1
+        shape.y +=1
+        
+        # Draw the shape again
+        shape.draw_shape(grid)
+
+    else:
+        shape = Shape()
+        check_grid(grid)
+        
+    # Draw the screen
+    draw_grid(pen, grid)
+    draw_score(pen, score)
+    
+    time.sleep(delay)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     if(grid[i][j+1]==1 and f==0):
+
+
+
+                    if(grid[i+1][j]==5):
+
+
+
+                        if(grid[i][j+1]!=0):
+                            grid[i][j]=0
+                            grid[i+1][j]=2
+                        else:
+                            grid[i][j]=0
+                            grid[i+1][j]=2
+
+                    elif(grid[i-1]==5):
+                    
+                    else:
+                        a=random.randint(0,1)
+                        if(a==1):
+                            grid[i][j]=0
+                            grid[i+1][j]=2
+                        else:
+                            grid[i][j]=0
+                            grid[i-1][j]=2
+                        f=1
+
+                else:
+                    grid[i][j]=0
+                    grid[i][j+1]=2
+
+
+
+
+
+
+
+
+
+
+dimCH = height / nyC
+
+gameState = np.zeros((nxC, nyC))
+
+# Autómata palo:
+# 0 1 0
+# 0 1 0
+# 0 1 0
+# gameState[5, 3] = 1
+# gameState[5, 4] = 1
+# gameState[5, 5] = 1
+
+# Autómata móvil:
+# 0 1 0
+# 0 0 1
+# 1 1 1
+# gameState[21, 21] = 1
+# gameState[22, 22] = 1
+# gameState[22, 23] = 1
+# gameState[21, 23] = 1
+# gameState[20, 23] = 1
+
+# Versión de mi autómata que siempre aparece centrada: Autómata Jonatandb :)
+#posInitX = int((nxC / 2) - 3)
+#posInitY = int((nyC / 2) - 5)
+#gameState[posInitX, posInitY] = 1
+#gameState[posInitX + 1, posInitY] = 1
+#gameState[posInitX + 2, posInitY] = 1
+#gameState[posInitX + 3, posInitY] = 1
+
+#gameState[posInitX + 3, posInitY + 1] = 1
+#gameState[posInitX + 3, posInitY + 2] = 1
+
+#gameState[posInitX, posInitY + 3] = 1
+#gameState[posInitX + 3, posInitY + 3] = 1
+
+#gameState[posInitX, posInitY + 4] = 1
+#gameState[posInitX + 1, posInitY + 4] = 1
+#gameState[posInitX + 2, posInitY + 4] = 1
+#gameState[posInitX + 3, posInitY + 4] = 1
